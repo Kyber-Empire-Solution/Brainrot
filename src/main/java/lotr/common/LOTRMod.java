@@ -21,6 +21,7 @@ import lotr.common.entity.npc.LOTRSpeech;
 import lotr.common.fac.LOTRFaction;
 import lotr.common.fellowship.LOTRFellowship;
 import lotr.common.item.*;
+import lotr.common.itemreg.SkibidiItems;
 import lotr.common.network.LOTRPacketHandler;
 import lotr.common.playerdetails.LOTRPlayerDetailsCache;
 import lotr.common.quest.LOTRMiniQuestFactory;
@@ -4400,6 +4401,7 @@ public class LOTRMod {
 		registerBlock(stairsMorwaithBrickCracked);
 		registerBlock(pillar3, LOTRItemBlockMetadata.class);
 		registerItem(goldRing);
+		SkibidiItems.autoRegisterItems();
 		registerItem(pouch);
 		registerItem(copper);
 		registerItem(tin);

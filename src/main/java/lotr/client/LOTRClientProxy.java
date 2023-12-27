@@ -6,6 +6,7 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.relauncher.Side;
+import lotr.client.BRMusic.MusicEventHandler;
 import lotr.client.fx.*;
 import lotr.client.gui.*;
 import lotr.client.model.LOTRArmorModels;
@@ -59,6 +60,7 @@ import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.EmptyChunk;
+import net.minecraftforge.common.MinecraftForge;
 import org.lwjgl.opengl.GL11;
 
 import java.util.List;
@@ -754,6 +756,8 @@ public class LOTRClientProxy extends LOTRCommonProxy {
 		System.setProperty("fml.skipFirstTextureLoad", "false");
 		LOTRItemRendererManager.load();
 		LOTRArmorModels.setupArmorModels();
+		MinecraftForge.EVENT_BUS.register(MusicEventHandler.INSTANCE);
+		FMLCommonHandler.instance().bus().register(MusicEventHandler.INSTANCE);
 	}
 
 	@Override

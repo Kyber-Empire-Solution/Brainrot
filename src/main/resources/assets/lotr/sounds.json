@@ -702,5 +702,23 @@
 		"sounds": [
 			"misc/fart-with-extra-reverb"
 		]
-	}
+	},
+    "custom_menu1": {
+        "category": "music",
+        "sounds": [
+          {
+            "name": "skibidi_music/9MM-_Rife-cover_",
+            "stream": true
+          }
+        ]
+    },
+    "custom_menu2": {
+        "category": "music",
+        "sounds": [
+          {
+            "name": "skibidi_music/Brazilian-phonk-_-Gay-remix",
+            "stream": true
+          }
+        ]
+    }
 }
