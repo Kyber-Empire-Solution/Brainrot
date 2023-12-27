@@ -696,5 +696,11 @@
 		"sounds": [
 			"zebra/say"
 		]
+	},
+	"bomb.fartreverb": {
+		"category": "neutral",
+		"sounds": [
+			"misc/fart-with-extra-reverb"
+		]
 	}
 }

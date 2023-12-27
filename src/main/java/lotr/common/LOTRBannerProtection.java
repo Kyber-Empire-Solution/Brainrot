@@ -33,9 +33,11 @@ public class LOTRBannerProtection {
 		Pair<Object, Object> BRONZE = Pair.of(LOTRMod.blockOreStorage, 2);
 		Pair<Object, Object> SILVER = Pair.of(LOTRMod.blockOreStorage, 3);
 		Pair<Object, Object> GOLD = Pair.of(Blocks.gold_block, 0);
+		Pair<Object, Object> DONATE = Pair.of(Blocks.diamond_block, 0);
 		protectionBlocks.put(BRONZE, 8);
 		protectionBlocks.put(SILVER, 16);
 		protectionBlocks.put(GOLD, 32);
+		protectionBlocks.put(DONATE, 33);
 		lastWarningTimes = new HashMap<>();
 	}
 
@@ -165,14 +167,18 @@ public class LOTRBannerProtection {
 					return ProtectType.STRUCTURE;
 				}
 				EntityLivingBase bomber = bomb.getTntPlacedBy();
+				System.out.println(banner.getProtectionRange());
+				if (banner.getProtectionRange() == 33) {
+					return ProtectType.STRUCTURE;
+				}
 				if (bomber == null) {
-					return ProtectType.FACTION;
+					return ProtectType.NONE;
 				}
 				if (bomber instanceof EntityPlayer) {
-					return forPlayer((EntityPlayer) bomber, Permission.FULL).protects(banner);
+					return ProtectType.NONE;
 				}
 				if (bomber instanceof EntityLiving) {
-					return forNPC((EntityLiving) bomber).protects(banner);
+					return ProtectType.STRUCTURE;
 				}
 				return ProtectType.NONE;
 			}

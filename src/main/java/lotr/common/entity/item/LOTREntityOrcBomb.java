@@ -37,6 +37,9 @@ public class LOTREntityOrcBomb extends EntityTNTPrimed {
 		int meta = getBombStrengthLevel();
 		int strength = LOTRBlockOrcBomb.getBombStrengthLevel(meta);
 		boolean fire = LOTRBlockOrcBomb.isFireBomb(meta);
+		if(!worldObj.isRemote) {
+			worldObj.playSoundAtEntity(this, "lotr:bomb.fartreverb", 10.0f, 1.0f);
+		}
 		worldObj.newExplosion(this, posX, posY, posZ, (strength + 1) * 4.0f, fire, doTerrainDamage);
 	}
 
