@@ -1,0 +1,66 @@
+buildscript {
+	repositories {
+		mavenCentral()
+        maven {
+            name = "github"
+            url = "https://github.com/juanmuscaria/maven/raw/master"
+        }
+		maven { url "https://repo.maven.apache.org/maven2" }
+		maven { url "https://www.dcm4che.org/maven2" }
+		maven { url "https://repo1.maven.org/maven2/" }
+	}
+	dependencies {
+		classpath 'net.minecraftforge.gradle:ForgeGradle:[1.2-1.4.6-SNAPSHOT,)'
+		classpath 'org.apache.maven:maven-core:3.8.1'
+	}
+}
+
+plugins {
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
+    id 'java'
+}
+
+shadowJar {
+    configurations = [project.configurations.runtimeClasspath]
+    zip64 true
+}
+
+apply plugin: 'maven'
+apply plugin: 'forge'
+
+version = "1.0"
+group= "com.yourname.modid"
+archivesBaseName = "Brainrot"
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+minecraft {
+    version = "1.7.10-10.13.4.1614-1.7.10"
+    runDir = "eclipse"
+}
+
+compileJava {
+    options.encoding = "UTF-8"
+}
+
+jar {
+	manifest {
+		attributes 'FMLAT': 'lotr_at.cfg'
+		attributes 'FMLCorePlugin': 'lotr.common.coremod.LOTRLoadingPlugin'
+		attributes 'FMLCorePluginContainsFMLMod': 'true'
+	}
+	jar.finalizedBy shadowJar
+}
+
+repositories {
+	mavenCentral()
+	maven { url "https://repo1.maven.org/maven2/" }
+	maven { url "https://www.dcm4che.org/maven2" }
+	maven { url "https://repo.maven.apache.org/maven2" }
+}
+
+dependencies {
+    compile "org.openjfx:javafx-media:16"
+    // implementation 'com.esotericsoftware:kryo:5.5.0'
+}
